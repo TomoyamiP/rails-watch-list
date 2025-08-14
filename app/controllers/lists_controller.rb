@@ -3,6 +3,12 @@ class ListsController < ApplicationController
     @lists = List.all
   end
 
+  def show
+    @list = List.find(params[:id])
+    # If you want to see bookmarks/movies in the list:
+    @bookmarks = @list.bookmarks.includes(:movie)
+  end
+
   def new
     @list = List.new
   end
