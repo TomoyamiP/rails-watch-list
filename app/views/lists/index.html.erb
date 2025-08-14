@@ -25,9 +25,12 @@
 <div class="container mt-4 pt-3">
   <% if @lists.any? %>
     <% @lists.each do |list| %>
-      <% background_url = list.name == "Movies for PJ" ?
-          "https://image.pollinations.ai/prompt/Movies%20for%20kids%20banner%20princess?width=1920&height=600&seed=8463&nologo=true&model=flux" :
-          "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg" %>
+      <% background_url = if list.name == "Movies for PJ"
+          "https://image.pollinations.ai/prompt/Movies%20for%20kids%20banner%20princess?width=1920&height=600&seed=8463&nologo=true&model=flux"
+        else
+          # Encode the list name to use in the Pollinations AI URL
+          "https://image.pollinations.ai/prompt/#{URI.encode_www_form_component(list.name)}%20banner?width=1920&height=600&seed=#{rand(10000)}&nologo=true&model=flux"
+        end %>
       <div class="card-trip mb-3" style="background-image: url('<%= background_url %>'); background-size: cover; background-position: center;">
         <!-- Make the card background clickable -->
         <%= link_to list_path(list), class: "text-decoration-none text-dark d-block" do %>
