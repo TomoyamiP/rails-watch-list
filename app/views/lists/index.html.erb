@@ -1,13 +1,46 @@
-<h1>My Movie Lists</h1>
-<% if @lists.any? %>
-  <ul>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="<%= lists_path %>">
+      <i class="fa-solid fa-video me-2"></i>
+      Curated Cinematics
+    </a>
+    <div class="d-flex ms-auto">
+      <%= link_to "Home", lists_path, class: "btn btn-outline-light me-2" %>
+      <%= link_to "Create New List", new_list_path, class: "btn btn-outline-light" %>
+    </div>
+  </div>
+</nav>
+<!-- Banner -->
+<div class="card-category text-center py-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1613749742342-5abdaa0d0af3?q=80&w=1742&auto=format&fit=crop'); background-size: cover; background-position: center;">
+  <h1 class="display-4 fw-bold text-white mb-2">The Watchlist</h1>
+</div>
+<!-- Subheader -->
+<div class="text-center mt-4 mb-4 container pt-3">
+  <p class="lead subheader-lead">
+    This is a curated collection of movies, thoughtfully selected to inspire and entertain. Users are welcome to explore, contribute, and expand the list, adding their favorite films to make it even richer.
+  </p>
+</div>
+<!-- Movie List Cards -->
+<div class="container mt-4 pt-3">
+  <% if @lists.any? %>
     <% @lists.each do |list| %>
-      <li>
-        <%= link_to list.name, list_path(list) %>
-      </li>
+      <% background_url = list.name == "Movies for PJ" ?
+          "https://image.pollinations.ai/prompt/Movies%20for%20kids%20banner%20princess?width=1920&height=600&seed=8463&nologo=true&model=flux" :
+          "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg" %>
+      <div class="card-trip mb-3" style="background-image: url('<%= background_url %>'); background-size: cover; background-position: center;">
+        <!-- Make the card background clickable -->
+        <%= link_to list_path(list), class: "text-decoration-none text-dark d-block" do %>
+          <div style="height: 200px;"></div>
+        <% end %>
+        <!-- Footer with title and Add Movie button -->
+        <div class="card-trip-footer d-flex justify-content-between align-items-center p-3" style="background: rgba(0,0,0,0.5);">
+          <%= link_to list.name, list_path(list), class: "card-trip-title text-white mb-0 text-decoration-none" %>
+          <%= link_to "Add Movie", new_list_bookmark_path(list), class: "btn btn-primary btn-sm ms-auto" %>
+        </div>
+      </div>
     <% end %>
-  </ul>
-<% else %>
-  <p>You have no lists yet.</p>
-<% end %>
-<%= link_to "Create a new list", new_list_path %>
+  <% else %>
+    <p class="text-muted mt-4 text-center">You have no lists yet.</p>
+  <% end %>
+</div>

@@ -1,0 +1,28 @@
+.card-trip {
+  position: relative;
+  min-height: 200px; // ensures consistent height
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; // pushes footer to the bottom
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-trip-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.card-trip-title {
+  color: white;
+  font-size: 1.5rem; // make the title bigger
+  font-weight: bold;
+  margin: 0;
+}

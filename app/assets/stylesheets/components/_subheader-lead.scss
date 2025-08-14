@@ -1,0 +1,17 @@
+.subheader-lead {
+  font-size: 1.5rem; /* bigger than default .lead */
+  font-weight: 500;
+  color: #333; /* darker text */
+}
+
+.subheader-lead {
+  background-color: rgba(255, 255, 255, 0.1); /* semi-transparent background */
+  padding: 16px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.subheader-lead {
+  color: #0d6efd; /* Bootstrap primary color */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
