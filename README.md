@@ -1,3 +1,9 @@
+🎬 Watch-List
+
+A simple Ruby on Rails app for browsing movies via the OMDb API, saving favorites into custom watchlists, and leaving reviews.
+
+⸻
+ 
 🚀 Features
 	•	🔍 Search movies from the OMDb API
 	•	📜 Create and manage watchlists to organize your favorite films
